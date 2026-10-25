@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Next.js & Hardhat Builds
+.next/
+**/.next/
+out/
+**/out/
+dist/
+**/dist/
+build/
+**/build/
+cache/
+**/cache/
+artifacts/
+**/artifacts/
+typechain-types/
+**/typechain-types/
+
+# Environment files & Secrets
+.env
+.env.local
+.env.*
+**/.env
+**/.env.local
+**/.env.*
+!.env.example
+!**/.env.example
+
+# Logs & System
+*.log
+**/*.log
+.DS_Store
+**/.DS_Store
