@@ -3,9 +3,9 @@ import "./globals.css";
 import Web3Provider from "@/context/Web3Provider";
 
 export const metadata: Metadata = {
-  title: "TraceBOT — Transaction & Wallet Investigator | Bohr Network",
+  title: "TraceBOT — Transaction & Wallet Investigator | BOT Chain",
   description:
-    "Forensic blockchain explorer for Bohr Network. Inspect transaction failures, trace fund flows, verify counterparty contracts, and attest investigations on-chain.",
+    "Forensic blockchain explorer for BOT Chain (Chain ID: 677). Inspect transaction failures, trace fund flows, verify counterparty contracts, and attest investigations on-chain.",
 };
 
 export default function RootLayout({

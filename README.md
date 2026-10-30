@@ -4,7 +4,7 @@
 
 # TraceBOT — Transaction and Wallet Investigator
 
-> Decentralized on-chain forensics and transaction flow tracing engine designed for the Bohr Network (Chain ID: 968).
+> Decentralized on-chain forensics and transaction flow tracing engine designed for the BOT Chain (Chain ID: 677).
 
 📄 **[Read Technical Whitepaper](./WHITEPAPER.md)**
 
@@ -12,7 +12,7 @@
 
 ## Overview
 
-Unlike token distribution trackers (e.g. HolderLens), **TraceBOT** analyzes the temporal sequence of transactions, fund pathways, and relationships between addresses on Bohr Network. It empowers users, security researchers, and developers to understand what happened on-chain during complex, failed, or suspicious transactions.
+Unlike token distribution trackers (e.g. HolderLens), **TraceBOT** analyzes the temporal sequence of transactions, fund pathways, and relationships between addresses on BOT Chain. It empowers users, security researchers, and developers to understand what happened on-chain during complex, failed, or suspicious transactions.
 
 ### Key Capabilities
 
@@ -33,22 +33,23 @@ Unlike token distribution trackers (e.g. HolderLens), **TraceBOT** analyzes the 
    - Heuristic anomaly signals (elevated revert ratios, low gas reserves for high-volume accounts, unindexed activity).
 
 4. **On-Chain Audit Registry (`TraceBOTRegistry.sol`)**:
-   - Every investigation request or re-check is formally recorded on Bohr Testnet.
+   - Every investigation request or re-check is formally recorded on BOT Chain.
    - **Payment Model**: Gas only (zero protocol fees).
    - Cryptographic result hash attestation: Anchors report findings with a tamper-proof digital fingerprint on-chain.
 
 ---
 
-## Bohr Testnet Configuration
+## BOT Chain Configuration
 
 | Parameter | Value |
 |---|---|
-| **Network Name** | Bohr Testnet |
-| **Chain ID** | `968` |
-| **RPC Endpoint** | `https://rpc.bohr.life` |
+| **Network Name** | BOT Chain |
+| **Chain ID** | `677` |
+| **RPC Endpoint** | `https://rpc.botchain.ai` |
 | **Native Currency** | `BOT` (18 decimals) |
-| **Block Explorer** | [https://scan.bohr.life](https://scan.bohr.life) |
-| **Deployed Contract** | `0x358d360A6b59b4d45CC96A012A083f6196CA9d45` |
+| **Block Explorer** | [https://scan.botchain.ai](https://scan.botchain.ai) |
+| **Official Website** | [https://botchain.ai](https://botchain.ai) |
+| **Deployed Contract** | `0xE7c3D3109eA0a77870b7AA7a8B7d91fD0970E3d9` |
 
 ---
 
@@ -68,27 +69,16 @@ The registry contract is located at [`contracts/contracts/TraceBOTRegistry.sol`]
 
 ### 1. Environment Configuration
 
-Check [`.env.local`](./.env.local):
-
-```bash
-PRIVATE_KEY=your_private_key_here
-PROJECT_ID=d9690df1851903b53a4f8c440127edec
-RPC_URL=https://rpc.bohr.life
-CHAIN_ID=968
-EXPLORER_URL=https://scan.bohr.life
-CONTRACT_ADDRESS=0x358d360A6b59b4d45CC96A012A083f6196CA9d45
+Ensure your `.env.local` contains:
+```env
+PRIVATE_KEY=your_private_key
+RPC_URL=https://rpc.botchain.ai
+CHAIN_ID=677
+EXPLORER_URL=https://scan.botchain.ai
+CONTRACT_ADDRESS=0xE7c3D3109eA0a77870b7AA7a8B7d91fD0970E3d9
 ```
 
-### 2. Smart Contract Commands
-
-```bash
-cd contracts
-npm install
-npx hardhat test
-npx hardhat run scripts/deploy.js --network bohr
-```
-
-### 3. Frontend Web Application
+### 2. Frontend Development
 
 ```bash
 cd frontend
@@ -96,4 +86,4 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Visit [http://localhost:3000](http://localhost:3000) to access TraceBOT.

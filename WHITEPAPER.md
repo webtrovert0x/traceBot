@@ -1,13 +1,13 @@
 # TraceBOT Technical Whitepaper
-### Decentralized On-Chain Forensics & Transaction Graph Tracing for Bohr Network
+### Decentralized On-Chain Forensics & Transaction Graph Tracing for BOT Chain
 
 ---
 
 ## 1. Executive Summary
 
-As decentralized applications on the **Bohr Network** proliferate, transaction complexity increases exponentially. Decentralized finance (DeFi) protocols, smart routers, automated market makers (AMMs), and multi-hop token transfers create intricate state transitions. When a transaction reverts, transfers assets unexpectedly, or interacts with deceptive contracts, standard block explorers offer only raw hexadecimal payloads and generic failure flags.
+As decentralized applications on the **BOT Chain** proliferate, transaction complexity increases exponentially. Decentralized finance (DeFi) protocols, smart routers, automated market makers (AMMs), and multi-hop token transfers create intricate state transitions. When a transaction reverts, transfers assets unexpectedly, or interacts with deceptive contracts, standard block explorers offer only raw hexadecimal payloads and generic failure flags.
 
-**TraceBOT** introduces a specialized forensics and transaction-flow tracing framework on the Bohr Network (Chain ID: 968). It decomposes complex EVM executions into human-readable sequence graphs, extracts exact revert reasons, maps counterparty contract relationships, and logs an immutable, state-verified investigation record onto the blockchain.
+**TraceBOT** introduces a specialized forensics and transaction-flow tracing framework on the BOT Chain (Chain ID: 677). It decomposes complex EVM executions into human-readable sequence graphs, extracts exact revert reasons, maps counterparty contract relationships, and logs an immutable, state-verified investigation record onto the blockchain.
 
 ---
 
@@ -34,8 +34,8 @@ TraceBOT operates a dual-layer architecture consisting of the on-chain registry 
                |                                           |
                v                                           v
 +-------------------------------+             +---------------------------+
-|     TraceBOTRegistry.sol      |             |     Bohr JSON-RPC Node    |
-| (Bohr Testnet: 0x358d...9d45) |             |    (https://rpc.bohr.life)|
+|     TraceBOTRegistry.sol      |             |   BOT Chain JSON-RPC Node |
+| (BOT Chain: 0xE7c3...0E3d9)   |             |  (https://rpc.botchain.ai)|
 +-------------------------------+             +-------------+-------------+
                |                                            |
                |                               +------------+------------+
@@ -55,7 +55,7 @@ TraceBOT operates a dual-layer architecture consisting of the on-chain registry 
 
 ### 3.1 TraceBOTRegistry.sol
 
-The core smart contract deployed on Bohr Testnet maintains an immutable ledger of forensic investigations:
+The core smart contract deployed on BOT Chain maintains an immutable ledger of forensic investigations:
 
 * **`requestTrace(bytes32 transactionHash)`**: Records an investigation request for a target transaction hash. Increments the global investigation counter and emits `TraceRequested`.
 * **`requestWalletTrace(address targetWallet, uint8 scope)`**: Records an investigation inquiry for a wallet address across configurable analytical depth scopes:
@@ -67,42 +67,32 @@ The core smart contract deployed on Bohr Testnet maintains an immutable ledger o
 
 ---
 
-## 4. Economic Model: Gas Only
+## 4. Economic Model: Pure Gas Only
 
-Unlike centralized analytics platforms that mandate subscription tiers or paywalled token gates, TraceBOT utilizes a **pure gas-only model**:
+Existing Web3 forensic suites impose expensive subscriptions or high pay-per-query protocol fees. TraceBOT adopts a **Pure Gas Only** model:
 
-$$\text{User Cost} = \text{Gas Used} \times \text{Gas Price}$$
+$$\text{Protocol Fee} = 0 \quad \implies \quad \text{User Cost} = \text{Gas Used} \times \text{Gas Price}$$
 
-* **Zero Protocol Tax**: The `TraceBOTRegistry` contract charges 0 BOT in protocol fees.
-* **Censorship-Resistant Inquiries**: Anyone with enough BOT to cover standard EVM execution gas can initiate, re-verify, or seal an investigation.
-* **Spam Deterrence**: Because every investigation request and check is an EVM state-changing call, network gas mechanics naturally prevent denial-of-service spam while keeping logs decentralized.
-
----
-
-## 5. Forensic Diagnostics Engine
-
-### 5.1 Revert Reason Extraction
-When a transaction status evaluates to `0x0` (reverted), the forensics engine automatically attempts an `eth_call` simulation with matching execution parameters (`from`, `to`, `data`, `value`, `gas`). This surfaces EVM revert reason strings (e.g. `ERC20: transfer amount exceeds balance`, `Pancake: INSUFFICIENT_OUTPUT_AMOUNT`) or custom Solidity panic codes.
-
-### 5.2 Flow Graph Generation
-Every transaction receipt is parsed for:
-1. Native BOT value transfers.
-2. Standard ERC-20 `Transfer(address,address,uint256)` topic logs (`0xddf252...`).
-3. Contract creations (`tx.to == null` with newly deployed bytecode).
-4. Method selector mapping against a verified database of EVM 4-byte interfaces.
-
-The resulting data is assembled into an ordered sequence:
-$$\text{Path} = [(\text{Step}_1, A \xrightarrow{v_1} B), (\text{Step}_2, B \xrightarrow{\text{call}} C), \dots, (\text{Step}_k, \text{Event}_k)]$$
+1. **Zero Protocol Fees**: The smart contract does not take any cut or levy any token fees.
+2. **Predictable Execution**: Verification requests require small execution gas, enabling developers and researchers to integrate TraceBOT without financial friction.
 
 ---
 
-## 6. Security Considerations & Non-Repudiation
+## 5. Network Specifications
 
-1. **Storage Minimization**: The smart contract does not duplicate transaction byte streams already present in the Bohr chain. Instead, it maintains index keys and cryptographic seals, preserving low gas overhead.
-2. **Deterministic Attestation**: By computing $\text{keccak256}$ of the standardized JSON dossier and anchoring it via `recordResultHash()`, investigators can later present the report to any third party who can verify that the hash matches the on-chain record at block timestamp $T$.
+| Parameter | Specification |
+|---|---|
+| **Network Name** | BOT Chain |
+| **Chain ID** | `677` |
+| **RPC Endpoint** | `https://rpc.botchain.ai` |
+| **Native Token** | `BOT` (18 decimals) |
+| **Explorer** | [https://scan.botchain.ai](https://scan.botchain.ai) |
+| **Official Website** | [https://botchain.ai](https://botchain.ai) |
+| **Registry Contract** | `0xE7c3D3109eA0a77870b7AA7a8B7d91fD0970E3d9` |
 
 ---
 
-## 7. Conclusion
+## 6. Security & Auditability
 
-TraceBOT bridges the critical gap between raw EVM execution data and actionable on-chain intelligence on the Bohr Network. By pairing decentralized state logging with an automated forensics inspection pipeline, it establishes a transparent standard for transaction and wallet investigations.
+All on-chain trace registrations and integrity hashes are publicly verifiable on BOT Chain Explorer:
+[https://scan.botchain.ai/address/0xE7c3D3109eA0a77870b7AA7a8B7d91fD0970E3d9#code](https://scan.botchain.ai/address/0xE7c3D3109eA0a77870b7AA7a8B7d91fD0970E3d9#code)

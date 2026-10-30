@@ -1,9 +1,9 @@
 import { createPublicClient, http, formatEther, isAddress, keccak256, toHex, stringToHex } from "viem";
-import { bohrTestnet } from "@/config/bohr";
+import { botchain } from "@/config/botchain";
 
 export const publicClient = createPublicClient({
-  chain: bohrTestnet,
-  transport: http(process.env.NEXT_PUBLIC_RPC_URL || "https://rpc.bohr.life"),
+  chain: botchain,
+  transport: http(process.env.NEXT_PUBLIC_RPC_URL || "https://rpc.botchain.ai"),
 });
 
 // Known standard ERC-20 Transfer topic
@@ -105,7 +105,7 @@ export async function investigateTransaction(
   ]);
 
   if (!tx) {
-    throw new Error("Transaction not found on Bohr network. Check the hash or wait for mining.");
+    throw new Error("Transaction not found on BOT Chain network. Check the hash or wait for mining.");
   }
 
   let timestamp: number | null = null;
@@ -277,7 +277,7 @@ export async function investigateTransaction(
 }
 
 /**
- * Investigates a wallet address on Bohr Network
+ * Investigates a wallet address on BOT Chain
  */
 export async function investigateWallet(
   walletAddress: `0x${string}`,
@@ -292,10 +292,11 @@ export async function investigateWallet(
   const isContract = !!bytecode && bytecode !== "0x";
   const balanceBOT = formatEther(balance);
 
-  // Fetch recent transactions via BohrScan API if available, or fall back to simulated sample
+  // Fetch recent transactions via BotScan API if available, or fall back to simulated sample
   let recentTransactions: WalletInvestigationResult["recentTransactions"] = [];
   try {
-    const explorerApiUrl = `https://scan.bohr.life/api?module=account&action=txlist&address=${walletAddress}&page=1&offset=${scope === 1 ? 15 : scope === 2 ? 30 : 50}&sort=desc`;
+    const explorerBase = process.env.NEXT_PUBLIC_EXPLORER_URL || "https://scan.botchain.ai";
+    const explorerApiUrl = `${explorerBase}/api?module=account&action=txlist&address=${walletAddress}&page=1&offset=${scope === 1 ? 15 : scope === 2 ? 30 : 50}&sort=desc`;
     const res = await fetch(explorerApiUrl, { cache: "no-store" });
     if (res.ok) {
       const data = await res.json();
@@ -364,7 +365,7 @@ export async function investigateWallet(
     suspiciousSignals.push({
       severity: "low",
       title: "No Explorer Indexer Records Found",
-      detail: "No indexed public transfer history found on BohrScan. Target may be newly funded or dormant.",
+      detail: "No indexed public transfer history found on BotScan. Target may be newly funded or dormant.",
     });
   }
 

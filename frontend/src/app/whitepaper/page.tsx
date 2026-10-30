@@ -39,7 +39,7 @@ export default function WhitepaperPage() {
                 TraceBOT Technical Whitepaper
               </h1>
               <p style={{ color: "#64748b", fontSize: "0.95rem" }}>
-                Decentralized On-Chain Forensics & Transaction Graph Tracing for Bohr Network
+                Decentralized On-Chain Forensics & Transaction Graph Tracing for BOT Chain
               </p>
             </div>
           </div>
@@ -51,14 +51,14 @@ export default function WhitepaperPage() {
               1. Executive Summary
             </h2>
             <p style={{ color: "#334155", lineHeight: 1.7, marginBottom: "0.75rem" }}>
-              As decentralized applications on the <strong>Bohr Network</strong> expand, transaction flows become
+              As decentralized applications on the <strong>BOT Chain</strong> expand, transaction flows become
               intricately layered. Automated market makers, cross-contract router calls, and token distribution
               mechanisms obscure the exact path of funds. When transactions fail or funds migrate unexpectedly,
               traditional block explorers only offer raw hex byte dumps.
             </p>
             <p style={{ color: "#334155", lineHeight: 1.7 }}>
               <strong>TraceBOT</strong> bridges this diagnostic divide. It operates an automated on-chain forensics
-              investigator on Bohr Network (Chain ID: 968) that replays executions, diagnoses exact EVM revert
+              investigator on BOT Chain (Chain ID: 677) that replays executions, diagnoses exact EVM revert
               messages, builds chronological fund sequence graphs, and anchors reports via cryptographic hash seals.
             </p>
           </section>
@@ -78,7 +78,7 @@ export default function WhitepaperPage() {
               </div>
               <div className="callout callout-info" style={{ marginBottom: 0 }}>
                 <strong>Non-Repudiation:</strong> Investigations need audit proof. TraceBOT records requests and
-                tamper-evident result hashes directly on Bohr Testnet.
+                tamper-evident result hashes directly on BOT Chain.
               </div>
             </div>
           </section>
@@ -90,12 +90,12 @@ export default function WhitepaperPage() {
             <p style={{ color: "#334155", lineHeight: 1.7, marginBottom: "1rem" }}>
               The registry contract is deployed at{" "}
               <a
-                href="https://scan.bohr.life/address/0x358d360A6b59b4d45CC96A012A083f6196CA9d45"
+                href="https://scan.botchain.ai/address/0xE7c3D3109eA0a77870b7AA7a8B7d91fD0970E3d9"
                 target="_blank"
                 rel="noreferrer"
                 style={{ fontFamily: "monospace", fontWeight: 600 }}
               >
-                0x358d360A6b59b4d45CC96A012A083f6196CA9d45
+                0xE7c3D3109eA0a77870b7AA7a8B7d91fD0970E3d9
               </a>
               . Key interfaces include:
             </p>
@@ -127,7 +127,7 @@ export default function WhitepaperPage() {
             </h2>
             <p style={{ color: "#334155", lineHeight: 1.7 }}>
               Unlike paywalled Web3 audit suites, TraceBOT operates with <strong>0% protocol tax</strong>. Every
-              on-chain investigation request requires standard Bohr network gas only:
+              on-chain investigation request requires standard BOT Chain gas only:
             </p>
             <div
               style={{
@@ -152,15 +152,15 @@ export default function WhitepaperPage() {
               <tbody>
                 <tr>
                   <th>Network</th>
-                  <td>Bohr Testnet</td>
+                  <td>BOT Chain</td>
                 </tr>
                 <tr>
                   <th>Chain ID</th>
-                  <td>968</td>
+                  <td>677</td>
                 </tr>
                 <tr>
                   <th>RPC Endpoint</th>
-                  <td>https://rpc.bohr.life</td>
+                  <td>https://rpc.botchain.ai</td>
                 </tr>
                 <tr>
                   <th>Native Token</th>
@@ -169,8 +169,8 @@ export default function WhitepaperPage() {
                 <tr>
                   <th>Block Explorer</th>
                   <td>
-                    <a href="https://scan.bohr.life" target="_blank" rel="noreferrer">
-                      https://scan.bohr.life
+                    <a href="https://scan.botchain.ai" target="_blank" rel="noreferrer">
+                      https://scan.botchain.ai
                     </a>
                   </td>
                 </tr>
@@ -179,13 +179,6 @@ export default function WhitepaperPage() {
           </section>
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="footer">
-        <div className="container">
-          TraceBOT — Decentralized Forensic Investigator for Bohr Network (Chain ID: 968)
-        </div>
-      </footer>
     </div>
   );
 }

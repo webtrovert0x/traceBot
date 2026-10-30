@@ -261,7 +261,7 @@ export default function TraceBotApp() {
               style={{ width: 32, height: 32, borderRadius: 6, objectFit: "contain" }}
             />
             <span>TraceBOT</span>
-            <span className="brand-badge">Bohr Network</span>
+            <span className="brand-badge">BOT Chain</span>
           </Link>
 
           <div className="nav-actions">
@@ -272,7 +272,7 @@ export default function TraceBotApp() {
 
             <div className="network-pill">
               <span className="network-dot"></span>
-              <span>Bohr Testnet (968)</span>
+              <span>BOT Chain (677)</span>
             </div>
 
             <button
@@ -294,7 +294,7 @@ export default function TraceBotApp() {
           <h1>Transaction & Wallet Investigator</h1>
           <p>
             Trace sequence of transactions, inspect revert reasons, uncover counterparty relationships,
-            and log immutable forensic reports on Bohr Testnet.
+            and log immutable forensic reports on BOT Chain.
           </p>
         </section>
 
@@ -418,7 +418,7 @@ export default function TraceBotApp() {
             <span>
               Contract:{" "}
               <a
-                href={`https://scan.bohr.life/address/${CONTRACT_ADDRESS}`}
+                href={`https://scan.botchain.ai/address/${CONTRACT_ADDRESS}`}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -444,9 +444,9 @@ export default function TraceBotApp() {
                 <strong>On-Chain Confirmation:</strong>
               </div>
               <div style={{ marginTop: "4px" }}>
-                Request recorded on Bohr Testnet:{" "}
+                Request recorded on BOT Chain:{" "}
                 <a
-                  href={`https://scan.bohr.life/tx/${onChainTxHash}`}
+                  href={`https://scan.botchain.ai/tx/${onChainTxHash}`}
                   target="_blank"
                   rel="noreferrer"
                   style={{ fontFamily: "monospace" }}
@@ -488,12 +488,12 @@ export default function TraceBotApp() {
                   </span>
 
                   <a
-                    href={`https://scan.bohr.life/tx/${txResult.hash}`}
+                    href={`https://scan.botchain.ai/tx/${txResult.hash}`}
                     target="_blank"
                     rel="noreferrer"
                     className="btn btn-outline btn-sm"
                   >
-                    <span>View on BohrScan</span>
+                    <span>View on BotScan</span>
                     <ExternalLink size={12} />
                   </a>
                 </div>
@@ -557,7 +557,7 @@ export default function TraceBotApp() {
                     <th>From (Initiator)</th>
                     <td>
                       <a
-                        href={`https://scan.bohr.life/address/${txResult.from}`}
+                        href={`https://scan.botchain.ai/address/${txResult.from}`}
                         target="_blank"
                         rel="noreferrer"
                       >
@@ -570,7 +570,7 @@ export default function TraceBotApp() {
                     <td>
                       {txResult.to ? (
                         <a
-                          href={`https://scan.bohr.life/address/${txResult.to}`}
+                          href={`https://scan.botchain.ai/address/${txResult.to}`}
                           target="_blank"
                           rel="noreferrer"
                         >
@@ -657,7 +657,7 @@ export default function TraceBotApp() {
                       <tr key={idx}>
                         <td>
                           <a
-                            href={`https://scan.bohr.life/token/${t.tokenAddress}`}
+                            href={`https://scan.botchain.ai/token/${t.tokenAddress}`}
                             target="_blank"
                             rel="noreferrer"
                           >
@@ -729,12 +729,12 @@ export default function TraceBotApp() {
                     {walletResult.isContract ? "Smart Contract" : "EOA Wallet"}
                   </span>
                   <a
-                    href={`https://scan.bohr.life/address/${walletResult.address}`}
+                    href={`https://scan.botchain.ai/address/${walletResult.address}`}
                     target="_blank"
                     rel="noreferrer"
                     className="btn btn-outline btn-sm"
                   >
-                    <span>View on BohrScan</span>
+                    <span>View on BotScan</span>
                     <ExternalLink size={12} />
                   </a>
                 </div>
@@ -843,7 +843,7 @@ export default function TraceBotApp() {
                         </td>
                         <td>
                           <a
-                            href={`https://scan.bohr.life/address/${c.contractAddress}`}
+                            href={`https://scan.botchain.ai/address/${c.contractAddress}`}
                             target="_blank"
                             rel="noreferrer"
                           >
@@ -904,7 +904,7 @@ export default function TraceBotApp() {
             <button
               onClick={() => refetchRecentTraces()}
               className="btn btn-outline btn-sm"
-              title="Refresh from Bohr blockchain"
+              title="Refresh from BOT Chain blockchain"
             >
               <RefreshCw size={12} />
               <span>Refresh</span>
@@ -962,7 +962,7 @@ export default function TraceBotApp() {
             </table>
           ) : (
             <div style={{ textAlign: "center", padding: "2rem 0", color: "#94a3b8" }}>
-              No previous investigation requests found yet on Bohr Testnet. Start the first one above!
+              No previous investigation requests found yet on BOT Chain. Start the first one above!
             </div>
           )}
         </div>
@@ -971,8 +971,47 @@ export default function TraceBotApp() {
       {/* Footer */}
       <footer className="footer">
         <div className="container">
-          TraceBOT — Decentralized Forensic Investigator for Bohr Network (Chain ID: 968) • Gas
-          Only Model • Deployed at {CONTRACT_ADDRESS.slice(0, 10)}...{CONTRACT_ADDRESS.slice(-8)}
+          <div style={{ marginBottom: "0.6rem" }}>
+            TraceBOT — Decentralized Forensic Investigator for BOT Chain (Chain ID: 677) • Gas
+            Only Model • Contract:{" "}
+            <a
+              href={`https://scan.botchain.ai/address/${CONTRACT_ADDRESS}`}
+              target="_blank"
+              rel="noreferrer"
+              style={{ fontFamily: "monospace" }}
+            >
+              {CONTRACT_ADDRESS.slice(0, 10)}...{CONTRACT_ADDRESS.slice(-8)}
+            </a>
+          </div>
+          <div className="footer-links">
+            <a
+              href="https://botchain.ai"
+              target="_blank"
+              rel="noreferrer"
+              className="footer-link"
+            >
+              <img
+                src="/botchain-logo.png"
+                alt="BOT Chain Logo"
+                className="footer-logo"
+              />
+              <span>https://botchain.ai</span>
+            </a>
+            <span style={{ color: "var(--border-light)" }}>•</span>
+            <a
+              href="https://scan.botchain.ai"
+              target="_blank"
+              rel="noreferrer"
+              className="footer-link"
+            >
+              <img
+                src="/botchain-logo.png"
+                alt="BOT Chain Logo"
+                className="footer-logo"
+              />
+              <span>https://scan.botchain.ai</span>
+            </a>
+          </div>
         </div>
       </footer>
     </div>

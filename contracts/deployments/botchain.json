@@ -1,0 +1,10 @@
+{
+  "network": "botchain",
+  "chainId": 677,
+  "contractAddress": "0xE7c3D3109eA0a77870b7AA7a8B7d91fD0970E3d9",
+  "deployer": "0x55DA37AbbF8C9141adA4Dd1C2eF7211c0483eC16",
+  "transactionHash": "0x8935a0ff45e734c59dbcec4f56ba09da8c0a52ba856f6868fc105c2a33a9cb56",
+  "blockNumber": 28515591,
+  "gasUsed": "1010490",
+  "timestamp": "2026-10-30T14:38:55.080Z"
+}

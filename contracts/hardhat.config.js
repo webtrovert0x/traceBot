@@ -24,8 +24,13 @@ module.exports = {
     },
   },
   networks: {
+    botchain: {
+      url: process.env.RPC_URL || process.env.BOTCHAIN_RPC_URL || "https://rpc.botchain.ai",
+      chainId: 677,
+      accounts: accounts,
+    },
     bohr: {
-      url: process.env.RPC_URL || process.env.BOHR_RPC_URL || "https://rpc.bohr.life",
+      url: process.env.BOHR_RPC_URL || "https://rpc.bohr.life",
       chainId: 968,
       accounts: accounts,
     },
@@ -35,9 +40,18 @@ module.exports = {
   },
   etherscan: {
     apiKey: {
+      botchain: "empty",
       bohr: "empty",
     },
     customChains: [
+      {
+        network: "botchain",
+        chainId: 677,
+        urls: {
+          apiURL: "https://scan.botchain.ai/api",
+          browserURL: "https://scan.botchain.ai",
+        },
+      },
       {
         network: "bohr",
         chainId: 968,
